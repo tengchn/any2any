@@ -17,7 +17,7 @@ python3 any2any.py -i INPUT -it INPUTTYPE -o OUTPUT -ot OUTTYPE
       -o, --output: Specify the output file path.
       -ot, --outtype: Specify the output file format. If not provided, the script attempts to guess the format based on the file suffix.
   Example: python3 any2any.py -i example.fasta -o example.phy
-
+```
 
 **any2any_multithreads.py**
 ```
@@ -30,3 +30,4 @@ python3 any2any_multithreads.py -i INPUT -it INPUTTYPE -o OUTPUT -ot OUTTYPE -t 
       -ot, --outtype: Specify the output file format. If not provided, the script attempts to guess the format based on the file suffix.
       -t, --threads: Number of threads to use (default: 4)
   Example: python3 any2any_multithreads.py -i example.fasta -o example.phy -t 4
+```
