@@ -1,7 +1,7 @@
 # Miscellaneous
 **any2any.py** is a Python script that facilitates the conversion of sequence alignment files between different formats. It supports commonly used formats and can automatically guess the format of the input and output files based on their suffixes.
 
-**any2any_parallel.py** and **any2any_multithreads.py** are multithreads version of **any2any.py**, with an option "-t" or "--threads" to define the number of threads you want to use. It was designed for the large files conversion, e.g., fastq file. **any2any_parallel.py** will process the file based on file size without regard to the content, then use the safe split points to ensure that each chunk starts and ends at a complete record boundary.
+**any2any_parallel.py** and **any2any_multithreads.py** are multithreads version of **any2any.py**, with an option "-t" or "--threads" to define the number of threads you want to use. It was designed for the large files conversion, e.g., fastq file. **any2any_parallel.py** will process the file based on file size without regard to the content, then use the safe split points to ensure that each chunk starts and ends at a complete record boundary. If the input is not in fastq format and the file size is less than 5 GB, **any2any.py** will be used instead.
 
 ## Requirements
 - Python 3
