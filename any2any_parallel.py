@@ -109,7 +109,7 @@ def main():
     if input_format == "fastq" and os.path.getsize(args.input) > 5000000000:
         all_sequences = split_and_parallel_process(args.input, input_format, args.threads)
         SeqIO.write(all_sequences, args.output, output_format)
-    else any2any(args)
+    else: any2any(args)
     
 if __name__ == '__main__':
     main()
