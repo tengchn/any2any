@@ -11,6 +11,22 @@ from Bio.SeqRecord import SeqRecord
 from joblib import Parallel, delayed
 import multiprocessing
 
+def any2any(args):
+    infile = args.input
+    outfile = args.output
+    if not args.inputtype:
+        it = Guess(args.input)
+    else:  
+        it = args.inputtype
+    if not args.outtype:
+        ot = Guess(args.output)
+    else:
+        ot = args.outtype   
+    sequences = [] 
+    for seq_re in SeqIO.parse(infile, it):
+        sequences.append(seq_re)      	
+    SeqIO.write(sequences, outfile, ot)
+
 def Guess(fmt):
     guess=os.path.splitext(fmt)[1][1:]
     if guess == "fas" or guess == "fa":
@@ -90,8 +106,10 @@ def main():
     args = argparser()
     input_format = args.inputtype if args.inputtype else Guess(args.input)
     output_format = args.outtype if args.outtype else Guess(args.output)
-    all_sequences = split_and_parallel_process(args.input, input_format, args.threads)
-    SeqIO.write(all_sequences, args.output, output_format)
+    if input_format == "fastq" and os.path.getsize(args.input) > 5000000000:
+        all_sequences = split_and_parallel_process(args.input, input_format, args.threads)
+        SeqIO.write(all_sequences, args.output, output_format)
+    else any2any(args)
     
 if __name__ == '__main__':
     main()
