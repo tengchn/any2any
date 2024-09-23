@@ -3,6 +3,11 @@
 
 **any2any_parallel.py** and **any2any_multithreads.py** are multithreads version of **any2any.py**, with an option "-t" or "--threads" to define the number of threads you want to use. It was designed for the large files conversion, e.g., fastq file. **any2any_parallel.py** will process the file based on file size without regard to the content, then use the safe split points to ensure that each chunk starts and ends at a complete record boundary. If the input is not in fastq format and the file size is less than 5 GB, **any2any.py** will be used instead.
 
+**For fastq to fasta** This will be faster than using the any2any: 
+```
+cat your.fastq | paste - - - - | sed 's/^@/>/g'| cut -f1-2 | tr '\t' '\n' > your.fasta
+```
+
 ## Requirements
 - Python 3
 - Biopython
