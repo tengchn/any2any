@@ -32,6 +32,8 @@ def Guess(fmt):
     guess=os.path.splitext(fmt)[1][1:]
     if guess == "fas" or guess == "fa":
         guess = "fasta"
+    elif guess == "gbf" or guess == "gb":
+        guess = "genbank"
     elif guess == "fq":
         guess = "fastq"
     elif guess == "phy":
